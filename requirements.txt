@@ -1,0 +1,11 @@
+streamlit
+pandas
+numpy
+nltk
+sentence-transformers
+scikit-learn
+plotly
+langdetect
+requests
+PyPDF2
+docling
