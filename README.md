@@ -133,5 +133,7 @@ streamlit run app.py
 - "Failed to process PDF": Check PDF format and permissions
 - "Memory error": Reduce batch size or free system memory
 
+
+you can access it by this link :  https://b59b-82-212-89-48.ngrok-free.app 
 ## Done
 
