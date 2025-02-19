@@ -1,139 +1,148 @@
-# AI CV Screening Tool
+# CV Analyzer
 
-## Overview
-The AI CV Screening Tool is a powerful application that helps streamline the recruitment process by automatically analyzing and ranking resumes based on job descriptions. It supports both Arabic and English content, making it versatile for international recruitment.
+A powerful CV/Resume analysis tool built with Streamlit that helps recruiters and hiring managers efficiently process, analyze, and compare multiple resumes against job requirements.
 
-## Features
+## 🌟 Features
 
-- **Resume Upload**: Upload multiple PDF or CSV resumes for processing.
-- **Job Description Matching**: Enter the job description to match against the uploaded resumes.
-- **Language Detection**: Automatically detects whether the resumes and job description are in Arabic or English.
-- **Resume Processing**: Processes the uploaded resumes and calculates their similarity to the job description.
-- **Similarity Scoring**: Resumes are ranked based on their similarity score to the job description.
-- **Evaluation**: Provides evaluation metrics such as precision, recall, and F1 score based on true labels of chosen candidates.
+- **Multi-Resume Processing**: Upload and analyze multiple PDF resumes simultaneously
+- **Multilingual Support**: Process resumes in both English and Arabic
+- **Intelligent Matching**: Compare resumes against job descriptions using advanced NLP
+- **Customizable Scoring**: Adjust weights for different criteria:
+  - Content matching
+  - Skills alignment
+  - Location preferences
+  - Experience requirements
+  - Education qualifications
+- **Interactive Dashboard**: Visualize candidate distributions and comparisons
+- **Detailed Analysis**: Get comprehensive insights for each candidate
+- **Chat Interface**: Query your resume database using natural language
+- **Export Capabilities**: Download analysis results in CSV and JSON formats
 
+## 📋 Prerequisites
 
-## Technical Stack
-- **Frontend**: Streamlit
-- **NLP**: NLTK, Sentence Transformers
-- **Machine Learning**: scikit-learn
-- **Data Processing**: Pandas, NumPy
-- **Visualization**: Plotly
-- **Document Processing**: docling
+- Python 3.8+
+- PDF processing capabilities
+- Internet connection for API access
 
-## Installation
+## 🚀 Installation
 
-### Prerequisites
-- Python 3.8 or higher
-
-
-### Setup
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ai-cv-screening-tool.git
-cd ai-cv-screening-tool
+git clone https://github.com/yourusername/cv-analyzer.git
+cd cv-analyzer
 ```
 
-2. Create and activate a virtual environment (recommended):
+2. Create a virtual environment:
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install required packages:
+3. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Requirements.txt
-```
-pandas
-matplotlib
-seaborn
-numpy
-torch
-nltk
-transformers
-scikit-learn
-sentence-transformers
-docling
-streamlit
-plotly
-langdetect
-
+4. Download required NLTK data:
+```python
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('averaged_perceptron_tagger')"
 ```
 
-## Usage
+## 💻 Usage
 
-### Starting the Application
+1. Start the application:
 ```bash
 streamlit run app.py
 ```
 
-## How to Use
+2. Navigate to the displayed local URL (typically http://localhost:8501)
 
-### 1. Upload & Process CVs
-- Upload multiple PDF resumes or a CSV file containing resumes.
-- Paste the job description to match against the resumes.
-- Click **Process Resumes** to calculate similarity scores.
+3. Use the application:
+   - Upload resumes (PDF format)
+   - Enter job description
+   - Set matching criteria and weights
+   - Process and analyze resumes
+   - View results and comparisons
+   - Export analysis results
 
-### 2. Results & Analysis
-- Once resumes are processed, go to **Results & Analysis** to view the ranking of resumes based on their similarity scores to the job description.
-- You can visualize the results and analyze the effectiveness of the screening.
+## 📊 Analysis Components
 
-### 3. Evaluation
-- If you have labeled data (true/false or selected candidates), you can evaluate the precision, recall, and F1 score for the top-ranked resumes.
+### Resume Processing
+- PDF text extraction
+- Language detection
+- Structure parsing
+- Data normalization
 
-## How It Works
+### Scoring System
+- Content similarity using BERT embeddings
+- Skills matching
+- Location alignment
+- Experience evaluation
+- Education qualification matching
 
-1. **Text Preprocessing**: The tool preprocesses resumes and job descriptions by tokenizing, removing stopwords, and chunking the text.
-2. **Embedding Calculation**: Using the `intfloat/multilingual-e5-large-instruct` SentenceTransformer model for generating embeddings., text embeddings are generated for both resumes and the job description.
-3. **Similarity Scoring**: The cosine similarity between the job description embedding and each resume embedding is calculated.
-4. **Ranking**: Resumes are ranked based on their similarity scores, with the most relevant resumes appearing at the top.
-5. **Evaluation**: If true labels are provided, precision, recall, and F1 scores are calculated to evaluate the quality of the screening process.
+### Visualization
+- Interactive dashboards
+- Comparison charts
+- Distribution graphs
+- Detailed candidate profiles
 
+## 🔧 Configuration
 
-## Best Practices for Use
+The application supports various configuration options:
 
-### Resume Format
-- Ensure PDFs are text-searchable (not scanned images)
-- For CSV files, ensure resume text is in a single column
-- Maintain consistent formatting across documents
+- Model settings:
+  - Using multilingual-e5-large-instruct model
+  - Configurable chunk sizes for text processing
+  
+- Parser settings:
+  - API endpoint configuration
+  - Response handling preferences
 
-### Job Descriptions
-- Be specific and detailed in job requirements
-- Include both technical and soft skills
-- Use clear, standard terminology
+- Export settings:
+  - CSV export options
+  - JSON report configuration
 
-### Evaluation
-- Use a balanced dataset for true label comparison
-- Consider both precision and recall metrics
-- Review confusion matrix for understanding errors
+## 🤝 API Integration
 
-## Troubleshooting
-
-### Common Issues
-1. **PDF Processing Errors**
-   - Ensure PDFs are not password-protected
-   - Verify PDFs contain searchable text
-   - Check file permissions
-
-2. **Language Detection Issues**
-   - Ensure text is properly encoded
-   - Check for mixed language content
-   - Verify text formatting
-
-3. **Performance Issues**
-   - Reduce batch size for large datasets
-   - Close other resource-intensive applications
-   - Check available system memory
-
-### Error Messages
-- "No module named 'nltk'": Run `pip install nltk`
-- "Failed to process PDF": Check PDF format and permissions
-- "Memory error": Reduce batch size or free system memory
+The system integrates with an external CV parsing API:
+- Endpoint: https://ai.kayanhr.com/cvparse
+- Authentication: Required
+- Format: JSON
 
 
-you can access it by this link :  https://b59b-82-212-89-48.ngrok-free.app 
-## Done
+
+## 📱 Responsive Design
+
+The interface adapts to different screen sizes:
+- Desktop: Full feature set
+- Tablet: Optimized layouts
+- Mobile: Essential features
+
+## 🛠 Troubleshooting
+
+Common issues and solutions:
+
+1. PDF Extraction Fails:
+   - Ensure PDF is not password protected
+   - Check for proper UTF-8 encoding
+   - Verify PDF is not corrupted
+
+2. API Connection Issues:
+   - Check internet connectivity
+   - Verify API endpoint status
+   - Ensure proper authentication
+
+3. Performance Issues:
+   - Reduce batch size
+   - Clear browser cache
+   - Restart application
+
+## 📚 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
+
 
