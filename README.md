@@ -18,7 +18,7 @@ A powerful CV/Resume analysis tool built with Streamlit that helps recruiters an
 - **Chat Interface**: Query your resume database using natural language
 - **Export Capabilities**: Download analysis results in CSV and JSON formats
 
-## 📋 Prerequisites
+## 🗋l Prerequisites
 
 - Python 3.8+
 - PDF processing capabilities
@@ -108,8 +108,8 @@ The system integrates with an external CV parsing API:
 - Endpoint: https://ai.kayanhr.com/cvparse
 - Authentication: Required
 - Format: JSON
-
-
+- API for configuration: Allows dynamic adjustment of parsing and scoring parameters
+- **Production API**: A Flask-based API is required for production deployment, enabling scalable and efficient processing
 
 ## 📱 Responsive Design
 
@@ -144,5 +144,6 @@ Common issues and solutions:
 3. Commit your changes
 4. Push to the branch
 5. Create a new Pull Request
+
 
 
