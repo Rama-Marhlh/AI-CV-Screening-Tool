@@ -111,6 +111,34 @@ The system integrates with an external CV parsing API:
 - API for configuration: Allows dynamic adjustment of parsing and scoring parameters
 - **Production API**: A Flask-based API is required for production deployment, enabling scalable and efficient processing
 
+## 💬 Chat System
+
+The application includes a chat interface that enables querying the resume database using natural language. We use the `deepseek-r1` model for chat responses:
+```python
+# Get response from model
+response = ollama.chat(
+    model='deepseek-r1',
+    messages=messages,
+    stream=False
+)
+```
+To use `deepseek-r1`, install the Ollama package and ensure it's properly configured:
+```bash
+pip install ollama
+```
+
+## 🌍 Using multilingual-e5-large-instruct Model
+
+This model is used for multilingual processing and resume matching. To download and use it:
+```python
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('intfloat/multilingual-e5-large-instruct')
+```
+Install the required package:
+```bash
+pip install sentence-transformers
+```
+
 ## 📱 Responsive Design
 
 The interface adapts to different screen sizes:
